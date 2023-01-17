@@ -1,0 +1,219 @@
+//====================================================================================================
+
+.page {
+    background-color: $colorBlack;
+    &__discover {
+    }
+    &__holiday {
+    }
+    &__culture {
+    }
+}
+
+//========================================================================================================================================================
+
+.discover {
+    background: url('@img/Background.jpg') center no-repeat fixed;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    &::after{
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: rem(358);
+        background: linear-gradient(360deg, #000000 14.99%, rgba(0, 0, 0, 0) 77.78%);
+        bottom: 0;
+        left: 0;
+    }
+    &__big-container {
+        @include adaptiveValue("padding-top",287 ,70, 0, 1780, 320 );
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        @media (max-height: em(640)){
+            overflow-y: scroll;   
+        }
+    }
+    &__content{
+        max-width: rem(950);
+        margin: 0 auto;
+        @media (max-width:$mobile){
+             flex: 1 1 100%; 
+             order: -1;
+        }
+    }
+    &__follow {
+        position: relative;
+        z-index: 5;
+        @include adaptiveValue("padding-top",60 ,0, 0, 1780, 320 );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        flex: 0 0 rem(25);
+        // @media (max-height: em(680)){
+        //     flex-direction: row;
+        //     align-items: center;
+        //     justify-content: space-evenly;
+        //     flex: 1 1 100%;
+        //     padding-top: 50px;
+        // }
+    }
+    &__text {
+        writing-mode: vertical-lr;
+        margin-bottom: rem(20);
+        font-weight: 600;
+        @include adaptiveValue("font-size", 18, 14);
+        line-height: math.div(25 ,18 );
+        // @media (max-height: em(680)){
+        //     writing-mode: horizontal-tb;
+        //     margin-bottom: rem(0);
+        // }
+    }
+
+    &__icon-link {
+        @include adaptiveValue("font-size", 24, 18);
+        transition: all 0.3s ease 0s;
+        padding: rem(5) rem(0) ;
+        @media (any-hover: hover){
+            &:hover{
+                color: $colorOrange;
+            }
+        }
+    }
+    &__subtitle {
+        
+    }
+    &__title {
+        font-weight: 500;
+        @include adaptiveValue("font-size", 96,36 );
+        line-height: math.div(100 , 96);
+        margin-bottom: em(126,96);
+        span {
+            font-weight: 700;
+        }
+    }
+    &__scroll {
+        text-align: center;
+        a {
+            position: relative;
+            padding-right: rem(25);
+            font-weight: 600;
+            @include adaptiveValue("font-size", 18, 14);
+            line-height: math.div(25 , 18);
+            &::before{
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: rem(16);
+                height: rem(24);
+                background: url(@img/icons/arrow_downward_24px.svg) no-repeat center;
+            }
+        }
+    }
+}
+
+//====================================================================================================
+
+.holiday {
+    @include adaptiveValue("padding-bottom", 250, 40);
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width:$mobile){
+             flex-wrap: wrap; 
+        }
+    }
+    &__photo {
+        min-width: 300px;
+        position: relative;
+        padding-bottom: percent(720,1460);
+        width: percent(598,1460);
+        z-index: 0;
+        img{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+        @media (max-width:$mobile){
+            flex: 1 1 100%;
+            margin: rem(20) rem(-15);
+            position: static;
+            width: 100%;
+            padding-bottom: 0;
+            img{
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    &__body {
+        max-width: rem(632);
+        flex: 0 1 50%;
+        padding: rem(10);
+        @media (max-width:$mobile){
+             flex: 1 1 100%;
+             order: -1; 
+        }
+    }
+}
+
+//========================================================================================================================================================
+
+.culture {
+    @include adaptiveValue("padding-bottom", 250, 40);
+    @include adaptiveValue("padding-top", 250, 40);
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width:$mobile){
+             flex-wrap: wrap; 
+        }
+    }
+    &__body {
+        max-width: rem(632);
+        flex: 0 1 50%;
+        padding: rem(10);
+        @media (max-width:$mobile){
+             flex: 1 1 100%;
+             order: -1; 
+        }
+    }
+    &__photo {
+        min-width: 300px;
+        position: relative;
+        padding-bottom: percent(720,1460);
+        width: percent(598,1460);
+        z-index: 0;
+        img{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+        @media (max-width:$mobile){
+            flex: 1 1 100%;
+            margin: rem(20) rem(-15);
+            position: static;
+            width: 100%;
+            padding-bottom: 0;
+            img{
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+//========================================================================================================================================================
+ 
+

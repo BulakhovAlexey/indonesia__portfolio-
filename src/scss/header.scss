@@ -1,0 +1,147 @@
+//====================================================================================================
+.header {
+	@include adaptiveValue("padding-top",58 ,10 );
+	@include adaptiveValue("padding-bottom",58 ,10 );
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	&__big-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__logo {
+		flex: 0 0 100px;
+	}
+	&__menu {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media (max-width:$mobile){
+			 position: absolute;
+			 display: block;
+			 text-align: right;
+			 width: 60%;
+			 height: 100vh;
+			 top: 0;
+			 right: 0;
+			 padding-top: rem(100); 
+			 background-color: $colorBlack;
+			 transform: translateX(200%);
+			 transition: all 0.3s ease 0s;
+		}
+	}
+}
+.menu {
+	&__body {
+		flex: 1 1 100%;
+	}
+	&__list {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@media (max-width:$mobile){
+			 flex-direction: column;
+			 align-items: flex-end; 
+		}
+	}
+	&__item {
+		@include adaptiveValue("margin-right",40 ,10,0,1750,768);
+		@media (max-width:$mobile){
+			margin-right: 0;
+				margin-bottom: rem(25);
+			
+		}
+	}
+	&__link {
+		padding: rem(10) rem(10);
+		font-weight: 600;
+		font-size: rem(18);
+		line-height: math.div(25 , 18);	
+	}
+	&__search {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@media (max-width:$mobile){
+			 justify-content: flex-end; 
+			 margin-right: rem(10);
+		}
+	}
+
+	&__input {
+		font-weight: 400;
+		font-size: rem(17);
+		line-height: math.div(23 , 17);
+		background-color: transparent;
+		padding: 0 rem(8);
+		margin: rem(10);
+		width: rem(150);
+		&::placeholder{
+			font-weight: 400;
+			font-size: rem(17);
+			line-height: math.div(23 , 17);
+			color: $mainColor;
+		}
+	}
+
+	&__icon {
+	}
+}
+
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: rgb(255, 255, 255);
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+html.menu-open .menu {
+	transform: translateX(0);
+} // обращение к меню при открытом бургере
+
+//====================================================================================================
+

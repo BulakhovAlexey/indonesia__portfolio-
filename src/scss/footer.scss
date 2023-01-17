@@ -1,0 +1,228 @@
+//====================================================================================================
+.footer {
+    background-color: #2C2B2B;
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width:$mobile){
+             flex-wrap: wrap; 
+        }
+    }
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        @media (max-width:$mobile){
+             flex-wrap: wrap; 
+        }
+    }
+    &__low {
+    }
+}
+.top-footer {
+    padding-top: rem(10);
+    padding-bottom: rem(48);
+    border-bottom: 2px solid rgba($color: $mainColor, $alpha: 0.3);
+    &__ready {
+        font-family: 'DM Sans';
+        font-style: normal;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        @media (max-width:$mobile){
+             flex-wrap: wrap; 
+             flex: 1 1 100%;
+             justify-content: center;
+             padding-top: rem(20);
+        }
+    }
+    &__text {
+        padding:0 rem(20);
+        font-weight: 400;
+        font-size: rem(22);
+        line-height: math.div(29 , 22);
+        letter-spacing: -0.3px;
+    }
+    &__link {
+        font-weight: 700;
+        font-size: rem(17);
+        line-height: math.div(17 , 22);
+        padding: rem(24) rem(15);
+        min-width: rem(240);
+        background-color: $colorOrange;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include adaptiveValue("margin-left",55 ,0 );
+        @media (max-width:$mobile){
+             width: 100%; 
+             margin-top: rem(20);
+             margin-left: 0;
+        }
+    }
+}
+.body-footer {
+    padding-top: rem(55);
+    &__callback {
+        flex: 0 1 rem(400);
+        @media (max-width:$mobile){
+             margin-bottom: rem(20); 
+             flex: 1 1 100%;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: rem(36);
+        line-height: math.div(49 , 36);
+        letter-spacing: -0.3px;
+        @include adaptiveValue("margin-bottom",50 ,15);
+    }
+    &__form {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        border-bottom: 2px solid rgba($color: $mainColor, $alpha: 0.3);
+    }
+    &__input {
+        height: rem(40);
+        margin-bottom: rem(20);
+        padding: rem(0) rem(10);
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: rem(15);
+        line-height: math.div(20 , 15);
+        background-color: transparent;
+        color: $mainColor;
+        &::placeholder{
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: rem(15);
+            line-height: math.div(20 , 15);
+            letter-spacing: -0.204545px;
+            opacity: 0.5;
+        }
+    }
+    &__button {
+        border-radius: 8px 8px 0px 0px;
+        background-color: $colorOrange;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        padding: rem(30);
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                color: $colorOrange;
+                background-color: $mainColor;
+            }
+        }
+    }
+    &__spollers{
+        flex: 1 1 100%;
+    }
+}
+.spollers {
+    @media (max-width:$mobile){
+         margin: rem(20) rem(0) ; 
+    }
+    @media (min-width:$mobile){
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin: 0 -10px;
+    }
+    &__item {
+        @media (min-width:$mobile){
+            padding: 0 rem(10); 
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: rem(20);
+        line-height: 0;
+        letter-spacing: -0.231818px;
+        color: $colorOrange;
+        @media (min-width:$mobile){
+            padding: 0;
+             @include adaptiveValue("margin-bottom", 55,30,0,1750,768); 
+        }
+    }
+    &__body {
+        @media (min-width:$mobile){
+            padding: 0;
+            p {
+                padding: 0;
+            } 
+            li{
+                &:not(:last-child) {
+                    @include adaptiveValue("margin-bottom", 45,20,0,1750,768);
+                }
+            }
+        }
+    }
+}
+.col-footer {
+    &__link {
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+.low-footer {
+    @include adaptiveValue("padding-top",136 ,20 );
+    @include adaptiveValue("padding-bottom",136 ,20 );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @media (max-width:$mobile){
+         justify-content: center; 
+    }
+    &__poly {
+        letter-spacing: -0.204545px;
+        font-size: rem(15);
+        line-height: math.div(20 , 15);
+        @media (max-width:$mobile){
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0 -5px;
+       }
+    }
+    &__link {
+        letter-spacing: -0.204545px;
+        font-size: rem(15);
+        line-height: math.div(20 , 15);
+        @include adaptiveValue("margin-left",90 ,10 );
+        @media (max-width:$mobile){
+            margin: 0;
+            padding:0 rem(5);
+        }     
+    }
+    &__social {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        @media (max-width:$mobile){
+             flex: 1 1 100%;
+             order: -1; 
+             margin-bottom: rem(25);
+        }
+    }
+    &__social-link{
+        font-size: rem(30);
+        &:not(:last-child) {
+            margin-right: rem(50);
+        }
+        transition: all 0.3s ease 0s;
+        &:hover{
+            color: $colorOrange;
+        }
+    }
+
+}
+
+//====================================================================================================

@@ -1,0 +1,92 @@
+// Основные спойлеры
+// Фрагмент (HTML): spoller
+
+// Спойлеры блокируют
+.spollers {
+	display: grid;
+}
+// Спойлер
+.spollers__item {
+}
+// Заголовок спойлера
+.spollers__title{
+	cursor: default;
+	width: 100%;
+	text-align: left;
+	padding: rem(10) rem(15) rem(10) 0;
+	margin-bottom: rem(20);
+	position: relative;
+	@media (max-width:$mobile){
+		 width: 300px; 
+	}
+	._spoller-init & {
+		cursor: pointer;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 50%;
+			background-color: #000;
+			height: 2px;
+			width: 15px;
+			transition: transform 0.5s ease 0s;
+		}
+		&::before {
+			transform: translate(-75%, -50%) rotate(40deg);
+		}
+		&::after {
+			transform: translate(0, -50%) rotate(-40deg);
+		}
+		&._spoller-active {
+			&::before {
+				transform: translateX(-75%) rotate(-40deg);
+			}
+			&::after {
+				transform: rotate(40deg);
+			}
+		}
+		
+		._spoller-init & {
+			position: relative;
+			width: 100%;
+			text-align: left;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				top: rem(12);
+				height: rem(1);
+				transition: all 0.3s ease 0s;
+				width: rem(10);
+				background-color: #000;
+			}
+			&::before {
+				transform: rotate(40deg);
+				right: rem(7);
+			}
+			&::after {
+				transform: rotate(-40deg);
+			}
+		}
+		&._spoller-active {
+			&::before {
+				transform: rotate(-40deg);
+			}
+			&::after {
+				transform: rotate(40deg);
+			}
+		}
+		
+	}
+}
+// Контент спойлера
+.spollers__body {
+	padding: rem(15);
+	margin-bottom: rem(20);
+	border-radius: rem(5);
+	li{
+		&:not(:last-child) {margin-bottom: rem(10);}
+	}
+}
