@@ -8,6 +8,8 @@
     }
     &__culture {
     }
+    &__bromo {
+    }
 }
 
 //========================================================================================================================================================
@@ -216,4 +218,120 @@
 
 //========================================================================================================================================================
  
+.bromo {
+    &__slider {
+        position: relative;
+        @media (max-width:$mobile){
+            margin: 0 -15px;     
+        }
+    }
+    &__slide {
+        position: relative;
+    }
+    &__image {  
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    &__body {
+        background: linear-gradient(360deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 109.55%);
+        position: absolute;
+        @include adaptiveValue("height",percent(45,1) , percent(85,1));
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        overflow: visible;
+        @media (max-width:$mobile){
+             position: static; 
+             padding-top: rem(25);
+        }
+    }
+    &__subtitle {
+        display: inline-block;
+        letter-spacing: 6px;
+        font-weight: 700;
+        @include adaptiveValue("font-size", 18, 13);
+        line-height: math.div(25 , 18);
+        color: $colorOrange;
+        padding: 0 rem(101);
+        position: relative;
+        &::after,
+        &::before{
+            position: absolute;
+            content: '';
+            width: rem(72);
+            height: rem(2);
+            background-color: $colorOrange;
+            top: 50%;
+            transform: translateY(50%);
+        }
+        &::after{
+            left: 0;
+        }
+        &::before{
+            right: 0;
+        }
+    }
+    &__title {
+        max-width: rem(705);
+        margin: 0 auto em(27,64) auto;
+        font-weight: 700;
+        @include adaptiveValue("font-size", 64, 25);
+        line-height: math.div(87 , 64);
+    }
+    &__text {
+        max-width: rem(934);
+        margin: 0 auto em(39,18) auto;
+        font-weight: 600;
+        @include adaptiveValue("font-size", 18, 13);
+        line-height: math.div(32 , 18);
+    }
+    &__btn{
+        margin-bottom: rem(20);
+    }
+    &__control {
+        font-size: rem(19);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        @media (max-width:$mobile){
+             display: none; 
+        }
+    }
+    &__swiper-button-prev {
+        transform: rotate(180deg);
+        @include adaptiveValue("margin-left",50 , 10);
+    }
+    &__swiper-button-next {  
+        @include adaptiveValue("margin-right",50 , 10); 
+    }
+    &__swiper-pagination{
+        position: absolute;
+        width: 100%;
+        top: 10px; 
+        display: flex;
+        justify-content:center;
+        align-items: center;
+    }
+}
+.swiper-pagination-bullet{
+    margin: 0 rem(10) 0 0;
+    width: rem(10);
+    height: rem(10);
+    display: inline-block;
+    border-radius: 50%;
+    background: $colorBlack;
+    opacity: 0.4;
+    transition: all 0.3s ease 0s;
+}
+.swiper-pagination-bullet-active{
+    opacity: 1;
+}
 

@@ -58,7 +58,13 @@
 		padding: rem(10) rem(10);
 		font-weight: 600;
 		font-size: rem(18);
-		line-height: math.div(25 , 18);	
+		line-height: math.div(25 , 18);
+		transition: opacity 0.3s ease 0s;
+		@media (any-hover: hover){
+			&:hover{
+				opacity: 0.7;
+			}
+		}
 	}
 	&__search {
 		display: flex;
@@ -141,7 +147,7 @@
 }
 html.menu-open .menu {
 	transform: translateX(0);
-} // обращение к меню при открытом бургере
+}
 
 //====================================================================================================
 

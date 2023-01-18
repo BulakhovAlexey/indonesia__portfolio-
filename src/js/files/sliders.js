@@ -7,7 +7,7 @@
 // Мы подключаем Swider Slider с node_modules
 // При необходимости подключите дополнительные модули слайдера, указав на них в {} черезКому
 // Пример: { Navigation, Autoplay }
-import Swiper, { Navigation } from "swiper";
+import Swiper, { Navigation, Pagination } from "swiper";
 /*
 Основные модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -21,27 +21,28 @@ import "../../scss/base/swiper.scss";
 // Полный набор стилей с scss/libs/swiper.scss
 //import "../../scss/libs/swiper.scss";
 // Полный набор стилей с node_modules
-// import 'swiper/css';
+//import "swiper/css";
 
 // Инициализация ползунков
 function initSliders() {
   // Список ползунков
   // Проверьте, находится ли слайдер на странице
-  if (document.querySelector(".swiper")) {
+  if (document.querySelector(".bromo__slider")) {
     // Укажите навык желаемого ползунка
     // создаем слайдеры через  -- ; --
-    new Swiper(".NAME__slider", {
+    new Swiper(".bromo__slider", {
       // selector
-      modules: [Navigation],
+      modules: [Navigation, Pagination],
       observer: true,
       observeParents: true,
-      slidesPerView: 4,
+      slidesPerView: 1,
       spaceBetween: 0,
       autoHeight: true,
       speed: 800,
+      //parallax: true,
       //touchRatio: 0,
       //simulateTouch: false,
-      //loop: true,
+      loop: true,
       //preloadImages: false,
       //lazy: true,
       /*
@@ -53,12 +54,13 @@ function initSliders() {
 			},
 			*/
       // Пагінація
-      /*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
+
+      pagination: {
+        el: ".bromo__swiper-pagination.swiper-pagination",
+        type: "bullets",
+        clickable: true,
+      },
+
       // Скроллбар
       /*
 			scrollbar: {
@@ -68,8 +70,8 @@ function initSliders() {
 			*/
       // Кнопки "вліво/вправо"
       navigation: {
-        prevEl: ".NAME__button-prev", //selector
-        nextEl: ".NAME__button-next", //selector
+        prevEl: ".bromo__swiper-button-prev.swiper-button-prev", //selector
+        nextEl: ".bromo__swiper-button-next.swiper-button-next", //selector
       },
       /*
 			// Брейкпоінти
