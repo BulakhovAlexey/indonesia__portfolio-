@@ -19,6 +19,9 @@
     background-size: cover;
     height: 100vh;
     position: relative;
+    @media (max-height: em(456)){
+          height: 100%;
+    }
     &::after{
         position: absolute;
         content: '';
@@ -40,6 +43,8 @@
     &__content{
         max-width: rem(950);
         margin: 0 auto;
+        opacity: 0;
+        transition: all 0.7s ease 1s;
         @media (max-width:$mobile){
              flex: 1 1 100%; 
              order: -1;
@@ -54,13 +59,9 @@
         align-items: center;
         justify-content: space-between;
         flex: 0 0 rem(25);
-        // @media (max-height: em(680)){
-        //     flex-direction: row;
-        //     align-items: center;
-        //     justify-content: space-evenly;
-        //     flex: 1 1 100%;
-        //     padding-top: 50px;
-        // }
+        transform: translateX(-200%);
+        opacity: 0;
+        transition: all 0.7s ease 0.5s;
     }
     &__text {
         writing-mode: vertical-lr;
@@ -68,10 +69,6 @@
         font-weight: 600;
         @include adaptiveValue("font-size", 18, 14);
         line-height: math.div(25 ,18 );
-        // @media (max-height: em(680)){
-        //     writing-mode: horizontal-tb;
-        //     margin-bottom: rem(0);
-        // }
     }
 
     &__icon-link {
@@ -84,9 +81,6 @@
             }
         }
     }
-    &__subtitle {
-        
-    }
     &__title {
         font-weight: 500;
         @include adaptiveValue("font-size", 96,36 );
@@ -98,20 +92,35 @@
     }
     &__scroll {
         text-align: center;
+        position: relative;
+        z-index: 3;
         a {
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
             position: relative;
             padding-right: rem(25);
             font-weight: 600;
+            opacity: 0.6;
             @include adaptiveValue("font-size", 18, 14);
             line-height: math.div(25 , 18);
             &::before{
                 content: '';
                 position: absolute;
+                opacity: 0.6;
+                transition: all 0.3s ease 0s;
                 right: 0;
                 bottom: 0;
                 width: rem(16);
                 height: rem(24);
                 background: url(@img/icons/arrow_downward_24px.svg) no-repeat center;
+            }
+            @media (any-hover: hover){
+                &:hover{
+                    opacity: 1;
+                    &::after{
+                        opacity: 1;
+                    }
+                }
             }
         }
     }
@@ -121,6 +130,11 @@
 
 .holiday {
     @include adaptiveValue("padding-bottom", 250, 40);
+    &._watcher-view{
+        .holiday__photo{
+            animation: slide-rotate-hor-b-bck 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both; 
+        }
+    }
     &__container {
         display: flex;
         justify-content: space-between;
@@ -134,6 +148,7 @@
         position: relative;
         padding-bottom: percent(720,1460);
         width: percent(598,1460);
+        transform: translateY(150px) rotateX(90deg);
         z-index: 0;
         img{
             position: absolute;
@@ -166,59 +181,24 @@
     }
 }
 
-//========================================================================================================================================================
-
-.culture {
-    @include adaptiveValue("padding-bottom", 250, 40);
-    @include adaptiveValue("padding-top", 250, 40);
-    &__container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        @media (max-width:$mobile){
-             flex-wrap: wrap; 
-        }
+@keyframes slide-rotate-hor-b-bck {
+    0% {
+        transform: translateY(150px) rotateX(90deg);
+        transform: translateY(150px) translateZ(-230px) rotateX(90deg);
+        transform-origin: bottom center;
+        transform-origin: bottom center;
     }
-    &__body {
-        max-width: rem(632);
-        flex: 0 1 50%;
-        padding: rem(10);
-        @media (max-width:$mobile){
-             flex: 1 1 100%;
-             order: -1; 
-        }
-    }
-    &__photo {
-        min-width: 300px;
-        position: relative;
-        padding-bottom: percent(720,1460);
-        width: percent(598,1460);
-        z-index: 0;
-        img{
-            position: absolute;
-            width: 100%;
-            left: 0;
-            top: 0;
-            object-fit: cover;
-        }
-        @media (max-width:$mobile){
-            flex: 1 1 100%;
-            margin: rem(20) rem(-15);
-            position: static;
-            width: 100%;
-            padding-bottom: 0;
-            img{
-                position: static;
-                width: 100%;
-                height: auto;
-            }
-        }
+    100% {
+        transform: translateY(0) rotateX(0deg);
+        transform-origin: bottom center;
+        transform-origin: bottom center;
     }
 }
 
 //========================================================================================================================================================
- 
+
 .bromo {
+    @include adaptiveValue("padding-bottom", 250, 40);
     &__slider {
         position: relative;
         @media (max-width:$mobile){
@@ -238,7 +218,7 @@
     &__body {
         background: linear-gradient(360deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 109.55%);
         position: absolute;
-        @include adaptiveValue("height",percent(45,1) , percent(85,1));
+        @include adaptiveValue("height",percent(55,1) , percent(90,1));
         width: 100%;
         left: 0;
         bottom: 0;
@@ -290,7 +270,7 @@
         line-height: math.div(32 , 18);
     }
     &__btn{
-        margin-bottom: rem(20);
+        padding-bottom: rem(20);
     }
     &__control {
         font-size: rem(19);
@@ -298,6 +278,7 @@
         justify-content: space-between;
         align-items: center;
         position: absolute;
+        z-index: 5;
         width: 100%;
         top: 50%;
         transform: translateY(-50%);
@@ -335,3 +316,58 @@
     opacity: 1;
 }
 
+.culture {
+    @include adaptiveValue("padding-bottom", 250, 40);
+    &._watcher-view{
+        .culture__photo{
+            transform: translate(0);
+        }
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width:$mobile){
+            flex-wrap: wrap; 
+        }
+    }
+    &__body {
+        max-width: rem(632);
+        flex: 0 1 50%;
+        padding: rem(10);
+        @media (max-width:$mobile){
+            flex: 1 1 100%;
+            order: -1; 
+        }
+    }
+    &__photo {
+        min-width: 300px;
+        position: relative;
+        padding-bottom: percent(720,1460);
+        width: percent(598,1460);
+        z-index: 0;
+        transition: all 0.4s ease 0s;
+        transform: translateX(500%);
+        img{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+        @media (max-width:$mobile){
+            flex: 1 1 100%;
+            margin: rem(20) rem(-15);
+            position: static;
+            width: 100%;
+            padding-bottom: 0;
+            img{
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+//========================================================================================================================================================
+ 

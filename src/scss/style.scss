@@ -65,6 +65,18 @@ $responsiveType: 1;
 // сайт загружен!
 html {
 	&.loaded {
+		.header{
+			transform: translate(0);
+		}
+		.discover{
+			&__follow{
+				transform: translate(0);
+				opacity: 1;
+			}
+			&__content{
+				opacity: 1;
+			}
+		}
 		.className{}   // имя класса для которого ловим onLoad
 	}
 }
@@ -188,7 +200,7 @@ body {
 }
 ._title {
 	font-weight: 700;
-	@include adaptiveValue("font-size",64 ,40 );
+	@include adaptiveValue("font-size",64 ,26 );
 	line-height: math.div(87 , 64);
 	margin-bottom: em(27,64);
 	max-width: rem(555);

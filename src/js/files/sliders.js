@@ -7,10 +7,10 @@
 // Мы подключаем Swider Slider с node_modules
 // При необходимости подключите дополнительные модули слайдера, указав на них в {} черезКому
 // Пример: { Navigation, Autoplay }
-import Swiper, { Navigation, Pagination } from "swiper";
+import Swiper, { Navigation, Pagination, Parallax } from "swiper";
 /*
 Основные модули слайдера:
-Navigation, Pagination, Autoplay, 
+Navigation, Pagination, Autoplay, Parallax 
 EffectFade, Lazy, Manipulation
 Посмотрите больше https://swiperjs.com/
 */
@@ -32,14 +32,14 @@ function initSliders() {
     // создаем слайдеры через  -- ; --
     new Swiper(".bromo__slider", {
       // selector
-      modules: [Navigation, Pagination],
+      modules: [Navigation, Pagination, Parallax],
       observer: true,
       observeParents: true,
       slidesPerView: 1,
       spaceBetween: 0,
       autoHeight: true,
-      speed: 800,
-      //parallax: true,
+      speed: 1200,
+      parallax: true,
       //touchRatio: 0,
       //simulateTouch: false,
       loop: true,
@@ -54,13 +54,11 @@ function initSliders() {
 			},
 			*/
       // Пагінація
-
       pagination: {
         el: ".bromo__swiper-pagination.swiper-pagination",
         type: "bullets",
         clickable: true,
       },
-
       // Скроллбар
       /*
 			scrollbar: {
@@ -70,33 +68,9 @@ function initSliders() {
 			*/
       // Кнопки "вліво/вправо"
       navigation: {
-        prevEl: ".bromo__swiper-button-prev.swiper-button-prev", //selector
-        nextEl: ".bromo__swiper-button-next.swiper-button-next", //selector
+        prevEl: ".bromo__swiper-button-prev", //selector
+        nextEl: ".bromo__swiper-button-next", //selector
       },
-      /*
-			// Брейкпоінти
-			breakpoints: {
-				640: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
-      // События
-      on: {},
     });
     // new Swiper(".NAME__slider", {    //selector
     //   modules: [Navigation],

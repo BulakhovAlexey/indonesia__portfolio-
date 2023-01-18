@@ -44,6 +44,7 @@
         letter-spacing: -0.3px;
     }
     &__link {
+        text-transform: capitalize;
         font-weight: 700;
         font-size: rem(17);
         line-height: math.div(17 , 22);
@@ -55,6 +56,13 @@
         justify-content: center;
         align-items: center;
         @include adaptiveValue("margin-left",55 ,0 );
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                color: $colorOrange;
+                background-color: $mainColor;
+            }
+        }
         @media (max-width:$mobile){
              width: 100%; 
              margin-top: rem(20);
@@ -197,6 +205,12 @@
         font-size: rem(15);
         line-height: math.div(20 , 15);
         @include adaptiveValue("margin-left",90 ,10 );
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                text-decoration: underline;
+            }
+        }
         @media (max-width:$mobile){
             margin: 0;
             padding:0 rem(5);

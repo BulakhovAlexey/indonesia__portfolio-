@@ -5,6 +5,15 @@
 	position: fixed;
 	width: 100%;
 	z-index: 10;
+	transform: translateY(-100%);
+	transition: all 0.7s ease 0s;
+	&._header-scroll{
+		top: -200%;
+		transition: all 0.3s ease 0s;
+	}
+	&._header-show{
+		top: 0;
+	}
 	&__big-container {
 		display: flex;
 		justify-content: space-between;
@@ -147,6 +156,7 @@
 }
 html.menu-open .menu {
 	transform: translateX(0);
+	overflow: auto;
 }
 
 //====================================================================================================

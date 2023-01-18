@@ -22,12 +22,23 @@
                 Wonderful Indonesia
               </h1>
               <div class="discover__scroll">
-                <a href="#!">Scroll down</a>
+                <a
+                  data-goto=".holiday__container"
+                  data-goto-header
+                  data-goto-speed="1500"
+                  href="#"
+                  >Scroll down</a
+                >
               </div>
             </div>
           </div>
         </section>
-        <section class="page__holiday holiday">
+        <section
+          data-watch="navigator"
+          data-watch
+          data-watch-threshold=".2"
+          class="page__holiday holiday"
+        >
           <div class="holiday__container">
             <div class="holiday__photo">
               <img src="@img/holiday.jpg" alt="holiday" />
@@ -48,19 +59,21 @@
             </div>
           </div>
         </section>
-        <div class="page__bromo bromo">
+        <div data-watch="navigator" class="page__bromo bromo">
           <div class="bromo__container">
             <div class="bromo__slider swiper">
               <div class="bromo__wrapper swiper-wrapper">
                 <div class="bromo__slide swiper-slide">
                   <figure class="bromo__image">
                     <img src="@img/bromo.jpg" alt="bromo" />
-                    <figcaption data-swiper-parallax="-50" class="bromo__body">
-                      <h2 class="bromo__subtitle">Bromo</h2>
-                      <h1 class="bromo__title">
+                    <figcaption class="bromo__body">
+                      <h2 data-swiper-parallax="-400" class="bromo__subtitle">
+                        Bromo
+                      </h2>
+                      <h1 data-swiper-parallax="-400" class="bromo__title">
                         Steady your steps, we will climb together!
                       </h1>
-                      <p class="bromo__text">
+                      <p data-swiper-parallax="-400" class="bromo__text">
                         Enjoying the vast expanse of the sea of ​​​​sand,
                         witnessing the splendor of Mount Semeru that soars into
                         the sky, and gazing at the beauty of the sun moving out
@@ -68,7 +81,7 @@
                         the Bromo ridge is an unforgettable experience when
                         visiting Bromo.
                       </p>
-                      <div class="bromo__btn">
+                      <div data-swiper-parallax="-400" class="bromo__btn">
                         <a href="#!" class="bromo__read-more _more-btn"
                           >read more</a
                         >
@@ -80,11 +93,16 @@
                   <figure class="bromo__image">
                     <img src="@img/bromo.jpg" alt="bromo" />
                     <figcaption class="bromo__body">
-                      <h2 class="bromo__subtitle">Bromo</h2>
-                      <h1 class="bromo__title _title">
+                      <h2 data-swiper-parallax="-400" class="bromo__subtitle">
+                        Bromo
+                      </h2>
+                      <h1
+                        data-swiper-parallax="-400"
+                        class="bromo__title _title"
+                      >
                         Steady your steps, we will climb together!
                       </h1>
-                      <p class="bromo__text _text">
+                      <p data-swiper-parallax="-400" class="bromo__text _text">
                         Enjoying the vast expanse of the sea of ​​​​sand,
                         witnessing the splendor of Mount Semeru that soars into
                         the sky, and gazing at the beauty of the sun moving out
@@ -92,7 +110,7 @@
                         the Bromo ridge is an unforgettable experience when
                         visiting Bromo.
                       </p>
-                      <div class="bromo__btn">
+                      <div data-swiper-parallax="-400" class="bromo__btn">
                         <a href="#!" class="bromo__read-more _more-btn"
                           >read more</a
                         >
@@ -115,7 +133,12 @@
             </div>
           </div>
         </div>
-        <section class="page__culture culture">
+        <section
+          data-watch="navigator"
+          data-watch
+          data-watch-treshold=".2"
+          class="page__culture culture"
+        >
           <div class="culture__container">
             <div class="culture__body">
               <h2 class="culture__subtitle _subtitle">INDONESIAN CULTURE</h2>

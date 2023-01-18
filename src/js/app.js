@@ -17,7 +17,7 @@ flsFunctions.isWebp();
 // flsFunctions.addTouchClass();
 
 /* Добавление loaded для HTML После полной загрузки страницы */
-// flsFunctions.addLoadedClass();
+flsFunctions.addLoadedClass();
 
 /* Модуль для работы с меню (Бургер) */
 flsFunctions.menuInit();
@@ -74,7 +74,7 @@ flsFunctions.spollers();
 Модуль паралакса
 Документація: https://template.fls.guru/template-docs/modul-animacii-parallaks-obektov-pri-dvizhenii-myshi.html
 */
-import "./libs/parallax-mouse.js";
+//import "./libs/parallax-mouse.js";
 
 // ========================================================================================================================================================================================================================================================
 // Работа с формами ========================================================================================================================================================================================================================================================
@@ -164,7 +164,7 @@ import "./files/sliders.js";
 // Наблюдатель на объектах атрибута data-watch
 // Документация: https://template.fls.guru/template-docs/modul-nabljudatel-za-poyavleniem-elementa-pri-skrolle.html
 // Сніппет(HTML):
-//import "./libs/watcher.js";
+import "./libs/watcher.js";
 
 // модульПоекранноїПрокрутки
 // Документація: https://template.fls.guru/template-docs/modul-poekrannoj-prokrutki-stranicy-fullpage.html
@@ -181,11 +181,11 @@ import * as flsScroll from "./files/scroll/scroll.js";
 
 // Гладкая навигация на странице
 // Документація: https://template.fls.guru/template-docs/modul-plavnoj-navigacii-po-stranice.html
-//flsScroll.pageNavigation();
+flsScroll.pageNavigation();
 
 // Функциональность добавляет классы в заголовок во время прокрутки
 // Документація: https://template.fls.guru/template-docs/modul-dobavleniya-klassov-k-shapke-pri-prokrutke-stranicy.html
-//flsScroll.headerScroll();
+flsScroll.headerScroll();
 
 // Функціонал липкого блоку
 // flsScroll.stickyBlock();
