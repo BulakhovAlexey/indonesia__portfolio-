@@ -84,24 +84,22 @@
 			 margin-right: rem(10);
 		}
 	}
-
 	&__input {
 		font-weight: 400;
 		font-size: rem(17);
 		line-height: math.div(23 , 17);
+		color: white;
 		background-color: transparent;
 		padding: 0 rem(8);
 		margin: rem(10);
 		width: rem(150);
+		outline: none;
 		&::placeholder{
 			font-weight: 400;
 			font-size: rem(17);
 			line-height: math.div(23 , 17);
 			color: $mainColor;
 		}
-	}
-
-	&__icon {
 	}
 }
 
