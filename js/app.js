@@ -3952,7 +3952,7 @@
                 observer: true,
                 observeParents: true,
                 slidesPerView: 1,
-                spaceBetween: 0,
+                spaceBetween: 10,
                 autoHeight: true,
                 speed: 1200,
                 parallax: true,
