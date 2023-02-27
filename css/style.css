@@ -858,17 +858,37 @@ html.menu-open .menu {
   background: url("../img/icons/arrow-right.svg") center no-repeat;
 }
 
-.page {
+.page__holiday {
   background-color: #000;
 }
 
-.no-webp .discover{
-  background: url("../img/Background.jpg") center no-repeat fixed; }
+.page__culture {
+  background-color: #000;
+}
+
+.page__bromo {
+  background-color: #000;
+}
 
 .discover {
-  background-size: cover;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
   position: relative;
+}
+
+.no-webp .discover::before{
+  background: url("../img/Background.jpg") center no-repeat; }
+
+.discover::before {
+  position: fixed;
+  content: "";
+  z-index: -1;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .discover::after {
@@ -901,6 +921,8 @@ html.menu-open .menu {
   -webkit-transition: all 0.7s ease 1s;
   -o-transition: all 0.7s ease 1s;
   transition: all 0.7s ease 1s;
+  position: relative;
+  z-index: 2;
 }
 
 .discover__follow {
@@ -929,6 +951,8 @@ html.menu-open .menu {
   -webkit-transition: all 0.7s ease 0.5s;
   -o-transition: all 0.7s ease 0.5s;
   transition: all 0.7s ease 0.5s;
+  position: relative;
+  z-index: 2;
 }
 
 .discover__text {
@@ -2272,4 +2296,4 @@ html.menu-open .menu {
   }
 }
 
-.webp .discover{ background: url(../img/Background.webp) center no-repeat fixed; }
+.webp .discover::before{ background: url(../img/Background.webp) center no-repeat; }

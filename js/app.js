@@ -207,6 +207,26 @@
                 document.documentElement.classList.add(className);
             }));
         }
+        let isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+            }
+        };
         function addLoadedClass() {
             if (!document.documentElement.classList.contains("loading")) window.addEventListener("load", (function() {
                 setTimeout((function() {
@@ -216,6 +236,17 @@
         }
         function getHash() {
             if (location.hash) return location.hash.replace("#", "");
+        }
+        function fullVHfix() {
+            const fullScreens = document.querySelectorAll("[data-fullscreen]");
+            if (fullScreens.length && isMobile.any()) {
+                window.addEventListener("resize", fixHeight);
+                function fixHeight() {
+                    let vh = .01 * window.innerHeight;
+                    document.documentElement.style.setProperty("--vh", `${vh}px`);
+                }
+                fixHeight();
+            }
         }
         let _slideUp = (target, duration = 500, showmore = 0) => {
             if (!target.classList.contains("_slide")) {
@@ -464,6 +495,61 @@
                 }
             }
         }
+        class MousePRLX {
+            constructor(props, data = null) {
+                let defaultConfig = {
+                    init: true,
+                    logging: true
+                };
+                this.config = Object.assign(defaultConfig, props);
+                if (this.config.init) {
+                    const paralaxMouse = document.querySelectorAll("[data-prlx-mouse]");
+                    if (paralaxMouse.length) {
+                        this.paralaxMouseInit(paralaxMouse);
+                        this.setLogging(`Прокинувся, стежу за об'єктами: (${paralaxMouse.length})`);
+                    } else this.setLogging("Немає жодного обєкта. Сплю...zzZZZzZZz...");
+                }
+            }
+            paralaxMouseInit(paralaxMouse) {
+                paralaxMouse.forEach((el => {
+                    const paralaxMouseWrapper = el.closest("[data-prlx-mouse-wrapper]");
+                    const paramСoefficientX = el.dataset.prlxCx ? +el.dataset.prlxCx : 100;
+                    const paramСoefficientY = el.dataset.prlxCy ? +el.dataset.prlxCy : 100;
+                    const directionX = el.hasAttribute("data-prlx-dxr") ? -1 : 1;
+                    const directionY = el.hasAttribute("data-prlx-dyr") ? -1 : 1;
+                    const paramAnimation = el.dataset.prlxA ? +el.dataset.prlxA : 50;
+                    let positionX = 0, positionY = 0;
+                    let coordXprocent = 0, coordYprocent = 0;
+                    setMouseParallaxStyle();
+                    if (paralaxMouseWrapper) mouseMoveParalax(paralaxMouseWrapper); else mouseMoveParalax();
+                    function setMouseParallaxStyle() {
+                        const distX = coordXprocent - positionX;
+                        const distY = coordYprocent - positionY;
+                        positionX += distX * paramAnimation / 1e3;
+                        positionY += distY * paramAnimation / 1e3;
+                        el.style.cssText = `transform: translate3D(${directionX * positionX / (paramСoefficientX / 10)}%,${directionY * positionY / (paramСoefficientY / 10)}%,0);`;
+                        requestAnimationFrame(setMouseParallaxStyle);
+                    }
+                    function mouseMoveParalax(wrapper = window) {
+                        wrapper.addEventListener("mousemove", (function(e) {
+                            const offsetTop = el.getBoundingClientRect().top + window.scrollY;
+                            if (offsetTop >= window.scrollY || offsetTop + el.offsetHeight >= window.scrollY) {
+                                const parallaxWidth = window.innerWidth;
+                                const parallaxHeight = window.innerHeight;
+                                const coordX = e.clientX - parallaxWidth / 2;
+                                const coordY = e.clientY - parallaxHeight / 2;
+                                coordXprocent = coordX / parallaxWidth * 100;
+                                coordYprocent = coordY / parallaxHeight * 100;
+                            }
+                        }));
+                    }
+                }));
+            }
+            setLogging(message) {
+                this.config.logging ? functions_FLS(`[PRLX Mouse]: ${message}`) : null;
+            }
+        }
+        modules_flsModules.mousePrlx = new MousePRLX({});
         var smooth_scroll_polyfills_min = __webpack_require__(2);
         let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
             const targetBlockElement = document.querySelector(targetBlock);
@@ -4148,6 +4234,7 @@
         isWebp();
         addLoadedClass();
         menuInit();
+        fullVHfix();
         spollers();
         pageNavigation();
         headerScroll();
