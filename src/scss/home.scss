@@ -1,26 +1,40 @@
 //====================================================================================================
 
 .page {
-    background-color: $colorBlack;
+    //background-color: $colorBlack;
     &__discover {
     }
     &__holiday {
+        background-color: $colorBlack;
     }
     &__culture {
+        background-color: $colorBlack;
     }
     &__bromo {
+        background-color: $colorBlack;
     }
 }
 
 //========================================================================================================================================================
 
 .discover {
-    background: url('@img/Background.jpg') center no-repeat fixed;
-    background-size: cover;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100%;
     position: relative;
     @media (max-height: em(456)){
           height: 100%;
+    }
+    &::before{
+        position: fixed;
+        content: '';
+        z-index: -1;
+        background: url('@img/Background.jpg') center no-repeat;
+        background-size: cover;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
     }
     &::after{
         position: absolute;
@@ -45,6 +59,8 @@
         margin: 0 auto;
         opacity: 0;
         transition: all 0.7s ease 1s;
+        position: relative;
+        z-index: 2;
         @media (max-width:$mobile){
              flex: 1 1 100%; 
              order: -1;
@@ -62,6 +78,8 @@
         transform: translateX(-200%);
         opacity: 0;
         transition: all 0.7s ease 0.5s;
+        position: relative;
+        z-index: 2;
     }
     &__text {
         writing-mode: vertical-lr;
@@ -125,9 +143,7 @@
         }
     }
 }
-
 //====================================================================================================
-
 .holiday {
     @include adaptiveValue("padding-bottom", 250, 40);
     &._watcher-view{
@@ -180,7 +196,6 @@
         }
     }
 }
-
 @keyframes slide-rotate-hor-b-bck {
     0% {
         transform: translateY(150px) rotateX(90deg);
@@ -194,9 +209,7 @@
         transform-origin: bottom center;
     }
 }
-
 //========================================================================================================================================================
-
 .bromo {
     @include adaptiveValue("padding-bottom", 250, 40);
     &__slider {
@@ -315,7 +328,7 @@
 .swiper-pagination-bullet-active{
     opacity: 1;
 }
-
+//========================================================================================================================================================
 .culture {
     @include adaptiveValue("padding-bottom", 250, 40);
     &._watcher-view{
